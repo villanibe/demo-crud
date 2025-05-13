@@ -1,0 +1,15 @@
+services:
+   postgres:
+     image: postgres:13.1-alpine
+     restart: unless-stopped
+     environment:
+       - POSTGRES_USER=demo
+       - POSTGRES_PASSWORD=demo123
+       - POSTGRES_DB=demo_crud
+     ports:
+       - '5432:5432'
+     volumes:
+       - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
