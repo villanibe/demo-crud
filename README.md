@@ -36,6 +36,19 @@ A demonstration Spring Boot REST API application that implements complete CRUD (
 - Docker and Docker Compose (for database)
 - Git
 
+## 📊 API Flow Documentation
+
+For detailed understanding of how the API operations work, check out our comprehensive sequence diagrams:
+
+**[📈 View Sequence Diagrams](SEQUENCE_DIAGRAMS.md)**
+
+The diagrams illustrate:
+- Complete CRUD operation flows
+- Error handling mechanisms
+- Transaction management
+- System architecture overview
+- Component interactions
+
 ## 🏗️ Project Structure
 
 ```
