@@ -63,4 +63,15 @@ public class ArticleService {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Article not found with id: %s".formatted(articleId));
     }
+
+    @Transactional
+    public void deleteArticle(final String articleId) {
+        Optional<Article> optional = articleRepository.findByPublicId(articleId);
+        if (optional.isPresent()) {
+            articleRepository.delete(optional.get());
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                    "Article not found with id: %s".formatted(articleId));
+        }
+    }
 }

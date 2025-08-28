@@ -1,11 +1,19 @@
 package com.democrud.presentation.article.dto;
 
 import com.democrud.domain.Article;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
 import org.springframework.web.server.ResponseStatusException;
 
-public record ArticleRequestDTO(String title, String description) {
+@Schema(description = "Request DTO for creating an article")
+public record ArticleRequestDTO(
+        @Schema(description = "Title of the article", example = "Understanding Spring Boot", requiredMode = Schema.RequiredMode.REQUIRED)
+        String title,
+        
+        @Schema(description = "Description or content of the article", example = "A comprehensive guide to Spring Boot development", requiredMode = Schema.RequiredMode.REQUIRED)
+        String description
+) {
 
     public static Article toEntity(ArticleRequestDTO articleRequestDTO) {
         if( isValidRequest(articleRequestDTO)) {
