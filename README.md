@@ -1,6 +1,47 @@
 # Demo CRUD - Spring Boot Article Management API
 
-A demonstration Spring Boot REST API application that implements complete CRUD (Create, Read, Update, Delete) operations for managing articles. This project showcases modern Java development practices using Spring Boot 3.x, PostgreSQL, and comprehensive testing.
+A demonstration Spring Boot REST API application that implements complete CRUD (Create, Read, Update, Delete) operati| 🔴 DELETE | `/api/articles/{id}` | Delete article |
+
+## ⚠️ Error Handling
+
+The API implements comprehensive error handling with consistent response formats:
+
+### Error Response Format
+```json
+{
+    "status": 400,
+    "error": "Validation Error",
+    "message": "Validation failed for one or more fields",
+    "details": "Please check the provided data and try again",
+    "path": "/api/articles",
+    "timestamp": "2025-08-29T10:30:00.000",
+    "errorId": "ERR-ABC123DE",
+    "validationErrors": [
+        {
+            "field": "title",
+            "rejectedValue": "",
+            "message": "Title is required and cannot be blank"
+        }
+    ]
+}
+```
+
+### HTTP Status Codes
+- **200 OK**: Successful GET requests
+- **201 Created**: Successful POST requests  
+- **204 No Content**: Successful DELETE requests
+- **400 Bad Request**: Validation errors, malformed JSON
+- **404 Not Found**: Resource not found
+- **405 Method Not Allowed**: Unsupported HTTP methods
+- **500 Internal Server Error**: Unexpected system errors
+
+### Error Types
+- **Validation Error**: Input validation failures
+- **Resource Not Found**: Requested resource doesn't exist
+- **Bad Request**: Malformed requests or invalid data
+- **Internal Server Error**: System/database errors
+
+## 📚 API Documentation for managing articles. This project showcases modern Java development practices using Spring Boot 3.x, PostgreSQL, and comprehensive testing.
 
 ## 🚀 Features
 
@@ -10,6 +51,8 @@ A demonstration Spring Boot REST API application that implements complete CRUD (
 - **UUID-based Public IDs**: Secure external identifiers separate from database IDs
 - **Comprehensive Testing**: Unit and integration tests with high coverage
 - **Swagger/OpenAPI Documentation**: Interactive API documentation and testing interface
+- **Global Error Handling**: Standardized error responses with proper HTTP status codes
+- **Validation**: Bean validation with detailed error messages
 - **Docker Support**: Easy database setup with Docker Compose
 - **Modern Java**: Built with Java 21 and Spring Boot 3.4.5
 
@@ -22,10 +65,13 @@ A demonstration Spring Boot REST API application that implements complete CRUD (
 - **Build Tool**: Maven
 - **Testing**: JUnit 5, Mockito, Spring Boot Test
 - **Documentation**: Swagger/OpenAPI 3
+- **Error Handling**: Global exception handling with @ControllerAdvice
+- **Validation**: Bean Validation (JSR-303) with custom error responses
 - **Libraries**: 
   - Lombok (reducing boilerplate code)
   - Spring Web (REST API)
   - Spring Data JPA (database operations)
+  - Spring Boot Validation (request validation)
   - AssertJ (fluent assertions)
   - SpringDoc OpenAPI (API documentation)
 

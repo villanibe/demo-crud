@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +37,7 @@ public class ArticleController {
                     content = @Content(mediaType = "application/json"))
     })
     @PostMapping
-    public ResponseEntity<ArticleResponseDTO> createArticle(@RequestBody ArticleRequestDTO createArticleRequestDTO) {
+    public ResponseEntity<ArticleResponseDTO> createArticle(@Valid @RequestBody ArticleRequestDTO createArticleRequestDTO) {
 
         ArticleResponseDTO articleResponseDTO = articleService.createArticle(
                 ArticleRequestDTO.toEntity(createArticleRequestDTO)
